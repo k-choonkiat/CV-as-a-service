@@ -7,14 +7,18 @@
     <meta charset="utf-8">
     <title>Vehicle detector</title>
   </head>
+  {% block content %}
   <body>
     <h1> Insert a photo here </h1>
     <p> Flask is Fun </p>
-
-    <input type="file" id="myFile" name="filename" onchange="readURL(this);">
+    <form action="{{ url_for('predict')}}" method="post">
+    <input type="text" id="myFile" name="imgName" onchange="readURL(this);">
     <img id="blah" src="#" alt="your image" />
     <input type="submit">
+    </form>
+    {{ picture }}
   </body>
+  {% endblock %}
 </html>
 
 <script>
@@ -25,8 +29,8 @@ function readURL(input) {
           reader.onload = function (e) {
               $('#blah')
                   .attr('src', e.target.result)
-                  .width(150)
-                  .height(200);
+                  .width(1280)
+                  .height(856);
           };
 
           reader.readAsDataURL(input.files[0]);
