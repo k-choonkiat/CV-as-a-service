@@ -43,26 +43,15 @@ def home():
 def generate():
      path = request.form['imgName']
     
-     image = detect_img(path)
+     image,time_taken = detect_img(path)
 
      img_tag=serve_pil_image(image)
 
     
 
      # return the data dictionary as a JSON response
-     return render_template("index.html",picture=img_tag)
+     return render_template("index.html",picture=img_tag,time_taken=time_taken)
 
-
-# @app.route("/predict", methods=["POST"])
-# def predict():
-#     path = request.args.get('link')
-#     path = path[1:-1]
-#     #image = Image.open(io.BytesIO(image))
-#     image = detect_img(path)
-#     img_tag=serve_pil_image(image)
-#     with open(img_tag,"rb") as image2string:
-#         converted_string = base64.b64encode(image2string.read())
-#     return {"image":converted_string}
 
 
 if __name__ == "__main__":
