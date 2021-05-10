@@ -108,13 +108,14 @@ def draw_boxes(image, boxes, class_names, scores, max_boxes=10, min_score=0.1):
         np.copyto(image, np.array(image_pil))
   return image
     
-def display_image(image):
-  fig = plt.figure(figsize=(20, 15))
-  fig.canvas.draw()
-  img = Image.frombytes('RGB', fig.canvas.get_width_height(),fig.canvas.tostring_rgb())
-  #plt.grid(False)
-  #plt.imshow(image)
-  return img
+# def display_image(image):
+#   fig = plt.figure(figsize=(20, 15))
+#   fig.canvas.draw()
+#   img = Image.frombytes('RGB', fig.canvas.get_width_height(),fig.canvas.tostring_rgb())
+#   #plt.grid(False)
+#   #plt.imshow(image)
+#   img.save("pictures/img.jpg")
+#   return img
 
 
 def run_detector(detector, path):
@@ -133,7 +134,9 @@ def run_detector(detector, path):
   image_with_boxes = draw_boxes(
       img.numpy(), result["detection_boxes"],
       result["detection_class_entities"], result["detection_scores"])
+  img = Image.fromarray(image_with_boxes, 'RGB')
+  img.save("pictures/img.jpg")
 
-  return display_image(image_with_boxes)
+  return img
 
 

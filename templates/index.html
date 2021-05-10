@@ -10,14 +10,15 @@
   {% block content %}
   <body>
     <h1> Insert a photo here </h1>
-    <p> Flask is Fun </p>
-    <form action="{{ url_for('predict')}}" method="post">
+    <p> This web application is able to detect Cars in the photos that are uploaded</p>
+    <form action="{{ url_for('generate')}}" method="post">
     <input type="text" id="myFile" name="imgName" onchange="readURL(this);">
-    <img id="blah" src="#" alt="your image" />
+    
     <input type="submit">
     </form>
-    {{ picture }}
+    {{ picture|safe}}
   </body>
+  {% time_taken %}
   {% endblock %}
 </html>
 
