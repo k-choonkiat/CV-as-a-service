@@ -2,6 +2,14 @@
 Creation of a  computer vision tool rest api/web application
 This is a simple prototype leveraging a web application as a service to detect cars from photos
 
+It uses the 
+
+### Running locally
+
+pip install -r requirements.txt
+
+Enter "python server.py" into the command line to start up the service
+
 Given an 
 
 Image links examles for testing:
